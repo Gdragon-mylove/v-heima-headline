@@ -8,6 +8,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 // 目录的默认索引文件，也就是index文件，.js .vue .json 优先级按照现在的顺序
 import router from '@/router/index.js'
 
+// 简单配置axios
+import axios from 'axios'
+Vue.prototype.$http = axios
+
 Vue.use(Elementui)
 
 Vue.config.productionTip = false
