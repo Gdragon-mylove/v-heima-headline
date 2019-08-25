@@ -6,7 +6,7 @@ import VueRouter from 'vue-router'
 import Login from '@/views/login'
 import Home from '@/views/home' // 导入home首页组件
 import Welcome from '@/views/welcome' // 导入welcome欢迎页面
-// import NotFound from '@/views/404'
+import NotFound from '@/views/404'
 
 Vue.use(VueRouter)
 
@@ -23,8 +23,8 @@ const router = new VueRouter({
       children: [
         { path: '/', name: 'welcome', component: Welcome }
       ]
-    }
-    // { path: '*', name: '404', component: 'NotFound' }
+    },
+    { path: '*', name: '404', component: NotFound }
   ]
 })
 

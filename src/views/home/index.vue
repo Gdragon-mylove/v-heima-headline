@@ -48,7 +48,7 @@
                 <span class="text">江苏传智播客科技教育有限公司</span>
                 <el-dropdown class="my-dropdown">
                     <span class="el-dropdown-link">
-                        <img class="avatar" src="../../assets/images/avatar.jpg" alt="">
+                        <img class="avatar" src="../../assets/images/231288.jpg" alt="">
                         <span class="username">用户名称</span>
                         <i class="el-icon-arrow-down el-icon--right"></i>
                     </span>
