@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- 一级路由的显示位置或者出口位置 -->
+    <!-- 一级路由的显示位置或者出口位置 占位符 -->
    <router-view></router-view>
   </div>
 </template>
