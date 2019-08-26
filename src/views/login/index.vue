@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import store from '@/store'
 export default {
   data () {
     // 自定义校验规则，通过element-ui组件先定义一个校验函数
@@ -68,6 +69,12 @@ export default {
 
           this.$http.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForms)
             .then(res => {
+              // 保存用户信息（token），获取响应主体下的data对象
+              // console.log(res)
+              store.setUser(res.data.data)
+              const aa = store.getUser()
+              console.log(aa)
+              
               // 登录成功就挑战到路由为'/'页面中
               this.$router.push('/')
             })

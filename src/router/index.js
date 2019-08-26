@@ -7,6 +7,7 @@ import Login from '@/views/login'
 import Home from '@/views/home' // 导入home首页组件
 import Welcome from '@/views/welcome' // 导入welcome欢迎页面
 import NotFound from '@/views/404'
+import store from '@/store'
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,19 @@ const router = new VueRouter({
     },
     { path: '*', name: '404', component: NotFound }
   ]
+})
+
+// 通过设置前置守卫来实现访问权限控制
+router.beforeEach((to, from, next) => {
+  // 获取用户的信息
+  const user = store.getUser()
+  // 判断用户是否通过登录页面跳转到其他页面的
+
+  // 访问的是登录页面 就放行执行next()
+  if (to.path === '/login') return next()
+  // 如不是通过登录页面访问的其他页面的话，就拦截到登录页面，再放行执行next()
+  if (!user.token) return next('/login')
+  next()
 })
 
 export default router
