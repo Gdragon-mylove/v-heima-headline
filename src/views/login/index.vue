@@ -72,9 +72,9 @@ export default {
               // 保存用户信息（token），获取响应主体下的data对象
               // console.log(res)
               store.setUser(res.data.data)
-              const aa = store.getUser()
-              console.log(aa)
-              
+              // const aa = store.getUser()
+              // console.log(aa)
+
               // 登录成功就挑战到路由为'/'页面中
               this.$router.push('/')
             })
