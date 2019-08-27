@@ -48,13 +48,13 @@
                 <span class="text">江苏传智播客科技教育有限公司</span>
                 <el-dropdown class="my-dropdown">
                     <span class="el-dropdown-link">
-                        <img class="avatar" src="../../assets/images/231288.jpg" alt="">
-                        <span class="username">用户名称</span>
+                        <img class="avatar" :src="photo" alt="">
+                        <span class="username">{{name}}</span>
                         <i class="el-icon-arrow-down el-icon--right"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item icon="el-icon-setting">个人设置</el-dropdown-item>
-                        <el-dropdown-item icon="el-icon-unlock">退出登录</el-dropdown-item>
+                        <el-dropdown-item icon="el-icon-setting" @click.native="setting()">个人设置</el-dropdown-item>
+                        <el-dropdown-item icon="el-icon-unlock" @click.native="loginout()">退出登录</el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
             </el-header>
@@ -67,11 +67,20 @@
 </template>
 
 <script>
+import store from '@/store'// 导入store文件
 export default {
   data () {
     return {
-      isCollapse: false
+      isCollapse: false,
+      photo: '',
+      name: ''
     }
+  },
+  created () {
+    // 首先获取用户信息
+    const user = store.getUser()
+    this.photo = user.photo// 当前的用户输入的头像
+    this.name = user.name// 当前用户输入的用户名称
   },
   methods: {
     toggleMenu () {
@@ -79,6 +88,22 @@ export default {
       // 数据isCollapse 默认值为false 是展开的意思
       // 通过这个数据的状态去切换 侧边栏展开与收起的状态
       this.isCollapse = !this.isCollapse
+    },
+    // 因为el-dropdown-item 组件事件绑定，不支持click
+    // 因此在给组件绑定事件的时候，如果组件不支持这个事件，也就不会触发
+    // click是原生DOM绑定的事件。因此就需要事件修饰符来阻止默认行为。@click.native="函数"
+
+    // 点击个人设置去到设置页面，提供一个函数
+    setting () {
+      // 点击触发跳转到路由为‘/setting’ 的页面
+      this.$router.push('/setting')
+    },
+    // 点击退出登录，提供一个函数
+    loginout () {
+      // 首先应该清除存储的用户登录信息
+      store.delUser()
+      // 然后退出登录，跳转到登录‘/login’ 页面
+      this.$router.push('/login')
     }
   }
 }
