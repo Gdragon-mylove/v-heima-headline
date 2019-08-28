@@ -7,7 +7,8 @@
 
 <script>
 export default {
-
+  // 给组件命名
+  name: 'my-bread'
 }
 </script>
 

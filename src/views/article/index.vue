@@ -51,7 +51,7 @@
             <el-table-column label="标题" prop="title"></el-table-column>
         </el-table>
         <!-- 分页部分 -->
-        <el-pagination class="pager" background layout="prev, pager, next" :total="1000"></el-pagination>
+        <el-pagination class="pager" background layout="prev, pager, next,total" :total="1000"></el-pagination>
      </el-card>
  </div>
 </template>
