@@ -16,7 +16,7 @@ axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0'
 // 在每次发送请求之前，执行拦截器
 axios.interceptors.request.use((config) => {
   // 拦截成功就在请求头加入token
-  config.headers.Authorization = 'Bearer' + store.getUser().token
+  config.headers.Authorization = 'Bearer ' + store.getUser().token
   return config
 }, (err) => {
   // 拦截失败就报出错误
