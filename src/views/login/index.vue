@@ -63,24 +63,38 @@ export default {
   // 3. 调用校验函数
   methods: {
     login () {
-      this.$refs.loginForm.validate((valid) => {
+      // 需要在外层函数加上async
+      this.$refs.loginForm.validate(async valid => {
         if (valid) {
-        //   console.log(this.loginForms)
+          // this.$http.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForms)
+          //   .then(res => {
+          //     // 保存用户信息（token），获取响应主体下的data对象
+          //     // console.log(res)
+          //     store.setUser(res.data.data)
+          //     // const aa = store.getUser()
+          //     // console.log(aa)
 
-          this.$http.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForms)
-            .then(res => {
-              // 保存用户信息（token），获取响应主体下的data对象
-              // console.log(res)
-              store.setUser(res.data.data)
-              // const aa = store.getUser()
-              // console.log(aa)
+          //     // 登录成功就挑战到路由为'/'页面中
+          //     this.$router.push('/')
+          //   })
+          //   .catch(() => {
+          //     this.$message.error('错了哦，这是一条错误消息')
+          //   })
 
-              // 登录成功就挑战到路由为'/'页面中
-              this.$router.push('/')
-            })
-            .catch(() => {
-              this.$message.error('错了哦，这是一条错误消息')
-            })
+          // 使用 async&await 方法实现登录功能，发送请求
+          // 通过try catch()来捕获登录可能异常的现象
+          try {
+            // ES6提供解构赋值语法：{data:{data:data}}
+            const { data: { data } } = await this.$http.post('/authorizations', this.loginForms)
+            // 登录成功就保存用户信息
+            store.setUser(data)
+            // 然后跳转到'/'首页
+            this.$router.push('/')
+          } catch (err) {
+            // console.log(e)
+            // 如果登录异常就提示
+            this.$message.error('手机号或验证码错误')
+          }
         }
       })
     }

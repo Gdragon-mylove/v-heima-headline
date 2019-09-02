@@ -1,9 +1,23 @@
 import axios from 'axios'
 import store from '@/store'
 import router from '@/router'
+// 导入json-bigint安装包
+import JSONBig from 'json-bigint'
 
 // 配置全局默认基准地址，baseURL为基准地址
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0'
+
+// 默认配置，转换响应数据
+axios.defaults.transformResponse = [data => {
+  // 对 data 后台原生的数据进行任意转换处理
+  // 但是有一些接口，无响应内容，所以就要做出处理
+  try {
+    return JSONBig.parse(data)
+  } catch (err) {
+    // 如果无响应内容的时候就报出错误，转换值为null
+    return data
+  }
+}]
 
 // 默认配置，请求头携带token
 // Headers是一个对象
