@@ -48,7 +48,7 @@
                 <span class="text">江苏传智播客科技教育有限公司</span>
                 <el-dropdown class="my-dropdown">
                     <span class="el-dropdown-link">
-                        <img class="avatar" :src="photo" alt="">
+                        <img class="h-avatar" :src="photo" alt="">
                         <span class="username">{{name}}</span>
                         <i class="el-icon-arrow-down el-icon--right"></i>
                     </span>
@@ -144,7 +144,7 @@ export default {
             }
             .my-dropdown {
                 float: right;
-                .avatar {
+                .h-avatar {
                     width: 30px;
                     height: 30px;
                     vertical-align: middle;

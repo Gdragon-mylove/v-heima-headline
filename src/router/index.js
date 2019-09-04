@@ -9,6 +9,7 @@ import Welcome from '@/views/welcome' // 导入welcome欢迎页面
 import NotFound from '@/views/404'
 import store from '@/store'
 import Article from '@/views/article'
+import Image from '@/views/images'
 
 Vue.use(VueRouter)
 
@@ -25,7 +26,8 @@ const router = new VueRouter({
       children: [
         { path: '/', name: 'welcome', component: Welcome },
         // 配置内容管理路由
-        { path: '/article', name: 'article', component: Article }
+        { path: '/article', name: 'article', component: Article },
+        { path: '/image', name: 'image', component: Image }
       ]
     },
     { path: '*', name: '404', component: NotFound }

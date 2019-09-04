@@ -1,5 +1,5 @@
 <template>
- <div class="container">
+ <div class="a-container">
      <el-card class="box-card">
         <div slot="header">
             <my-bread>内容管理</my-bread>
@@ -195,6 +195,7 @@ export default {
 </script>
 
 <style lang='less' scoped>
+.a-container{
   .el-card {
     margin-bottom: 20px;
   }
@@ -202,4 +203,6 @@ export default {
     text-align: center;
     margin-top: 20px;
   }
+
+}
 </style>

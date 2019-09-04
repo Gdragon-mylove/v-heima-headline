@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import Upload from './styles/index.css'
 
 import Elementui from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -13,6 +14,7 @@ import axios from '@/api'
 
 // 导入全局插件
 import myPlugin from '@/components'
+Vue.use(Upload) // 使用组件公共样式
 Vue.use(myPlugin) // 使用插件
 Vue.prototype.$http = axios
 
