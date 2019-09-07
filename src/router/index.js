@@ -10,6 +10,7 @@ import NotFound from '@/views/404'
 import store from '@/store'
 import Article from '@/views/article'
 import Image from '@/views/images'
+import Comment from '@/views/comment'
 
 Vue.use(VueRouter)
 
@@ -27,7 +28,8 @@ const router = new VueRouter({
         { path: '/', name: 'welcome', component: Welcome },
         // 配置内容管理路由
         { path: '/article', name: 'article', component: Article },
-        { path: '/image', name: 'image', component: Image }
+        { path: '/image', name: 'image', component: Image },
+        { path: '/comment', name: 'comment', component: Comment }
       ]
     },
     { path: '*', name: '404', component: NotFound }
