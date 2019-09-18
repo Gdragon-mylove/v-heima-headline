@@ -1,7 +1,7 @@
 <template>
   <div>
     <template>
-        <el-select v-model="value" placeholder="请选择">
+        <el-select :value="value" placeholder="请选择" @change="fn" clearable>
             <el-option
             v-for="item in channelOptions"
             :key="item.id"
@@ -20,7 +20,7 @@ export default {
   data () {
     return {
       // 当前选择的值
-      //   value: null,
+      // curchannel: null,
       // 获取频道数据
       channelOptions: []
     }
@@ -32,6 +32,10 @@ export default {
     async getchannelOptions () {
       const { data: { data } } = await this.$http.get('channels')
       this.channelOptions = data.channels
+    },
+    fn (channelId) {
+      if (channelId === '') channelId = null
+      this.$emit('input', channelId)
     }
   }
 }
